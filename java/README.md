@@ -10,6 +10,7 @@
             - [List](#List-종류-특징)
             - [Set](#Set-종류-특징)
             - [Queue](#Queue-종류-특징)
+            - [Map](#Map-종류-특징)
 - [참고](#참고)
 </br>
 
@@ -42,23 +43,38 @@
 :---:|:---:|:---  
 Set|HashSet</br>TreeSet|순서를 유지하지 않는 데이터의 집합으로 데이터의 중복을 허용하지 않음
 List|LinkedList</br>Vector</br>ArrayList|순서가 있는 데이터의 집합으로 데이터의 중복을 허용  
-Queue|LinkedList</br>PriorityQueue|List와 유사
+Queue|LinkedList</br>PriorityQueue|FIFO (First In First Out) 방식으로 요소를 정렬</br>PriorityQueue 클래스는 큐 사용 기능을 제공합니다. 그러나 FIFO 방식으로 요소를 정렬하지 않음
 Map|HashTable</br>HashMap</br>TreeMap|키(key), 값(value)의 쌍으로 이루어진 데이터 집합.</br>순서는 유지되지 않으나 key의 중복을 허용하지 않으나 value의 중복은 허용  
 * LinkedHashMap, LinkedHashSet의 경우 순서를 보장합니다.
 
+</br>
+
 #### List 종류 특징
-- Vector : ArrayList와 유사하나 항상 동기화함. 싱글 스레드일 경우에도 동기화 하기때문
+- Vector : ArrayList와 유사하나 항상 동기화함. 싱글 스레드일 경우에도 동기화 함.
 - ArrayList : index와 value를 같는 선형리스트. Random Access시 index값이 있기에 LinkedList보다 유리함.
 - LinkedList :  각 노드가 데이터와 포인터를 가지고 한 줄로 연결되어 있는 방식의 자료구조, 추가 / 삭제시 포인터만 변경하면 되기에 ArrayList보다 유리함.
+
+</br>
 
 #### Set 종류 특징
 - HashSet : HashSet은 순서의 정렬을 가지지 않고, 컬렉션의 객체 저장을 목적으로하는 일반적인 Set
 - TreeSet : '레드-블랙 트리(Red-Black Tree)로 구현되어 있음. 데이터의 추가, 삭제에는 시간이 걸리지만, 검색과 정렬이 뛰어나다는 장점
-LinkedHashSet : 들어오는 데이터의 순서를 보장 Set
+LinkedHashSet : 들어오는 데이터의 순서를 보장하는 Set
+
+</br>
 
 #### Queue 종류 특징
 - PriorityQueue : 먼저 들어온 순서대로 데이터가 나가는 것이 아닌 우선순위를 먼저 결정하고 그 우선순위가 높은 엘리먼트가 먼저 나가는 자료구조  
-- LinkedList : FIFO(First-In-First-Out) 구조의 자료구조
+- LinkedList : FIFO(First-In-First-Out) 구조의 자료구조  
+
+
+</br>
+
+#### Map 종류 특징
+- HashMap : Map의 특징인 key와 value의 쌍으로 이루어지며, key 또는 value 값으로써 null을 허용   
+- HashTable : HashMap과 유사하나 항상 동기화함. key 또는 value값으로 null을 허용하지 않음.  
+- LinkedHashMap : 들어오는 데이터의 순서를 보장하는 Map  
+- TreeMap : '레드-블랙 트리(Red-Black Tree)로 구현되어 있음. 데이터의 추가, 삭제에는 시간이 걸리지만, 검색과 정렬이 뛰어나다는 장점. Key(null을 허용하지 않음)값을 기준으로 정렬 됨.  
 
 </br>
 
