@@ -46,6 +46,7 @@ List|LinkedList</br>Vector</br>ArrayList|순서가 있는 데이터의 집합으
 Queue|LinkedList</br>PriorityQueue|FIFO (First In First Out) 방식으로 요소를 정렬</br>PriorityQueue 클래스는 큐 사용 기능을 제공합니다. 그러나 FIFO 방식으로 요소를 정렬하지 않음
 Map|HashTable</br>HashMap</br>TreeMap|키(key), 값(value)의 쌍으로 이루어진 데이터 집합.</br>순서는 유지되지 않으나 key의 중복을 허용하지 않으나 value의 중복은 허용  
 * LinkedHashMap, LinkedHashSet의 경우 순서를 보장합니다.
+* Stack의 경우 Vector(항상 동기화)를 상속받기 때문에 잘 사용안함.
 
 </br>
 
