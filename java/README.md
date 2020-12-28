@@ -12,8 +12,8 @@
             - [Queue](#Queue-종류-특징)
             - [Map](#Map-종류-특징)
         - [동기화, 병렬 컬렉션](#동기화,-병렬-컬렉션)
-            - [동기화된(synchronized) 컬렉션](#동기화된(synchronized)-컬렉션)
-            - [병렬(concurrent) 컬렉션](#병렬(concurrent)-컬렉션)
+            - [동기화된(synchronized) 컬렉션](#동기화된synchronized-컬렉션)
+            - [병렬(concurrent) 컬렉션](#병렬concurrent-컬렉션)
 - [참고](#참고)
 </br>
 
@@ -84,10 +84,17 @@ LinkedHashSet : 들어오는 데이터의 순서를 보장하는 Set
 
 ### 동기화, 병렬 컬렉션
 
+<br>
+
 #### 동기화된(synchronized) 컬렉션
-> - Vector, Hashtable, Collections.synchronizedXXX()로 생성된 컬렉션들  
+> List : Vector  
+> Map : Hashtable  
+> Collections.synchronizedXXX()로 생성된 컬렉션들  
+> <br>
 > 문제점: Thread Safe하나, 두개 이상의 연산을 묶어서 처리해야 할 때 외부에서 동기화 처리를 해줘야 한다. (Iteration, put-if-absent, replace, condition-remove 등)  
 > Since JDK 1.2  
+
+<br>
 
 #### 병렬(concurrent) 컬렉션
 > List: CopyOnWriteArrayList  
@@ -96,6 +103,7 @@ LinkedHashSet : 들어오는 데이터의 순서를 보장하는 Set
 > SortedMap: ConcurrentSkipListMap (Since Java 6)  
 > SortedSet: ConcurrentSkipListSet (Since Java 6)  
 > Queue 계열:ConcurrentLinkedQueue  
+> <br>
 > 특이사항: Concurrent(병렬/동시성)이란 단어에서 알 수 있듯이 Synchronized 컬렉션과 달리 여러 스레드가 동시에 컬렉션에 접근할 수 있다. ConcurrentHashMap의 경우, lock striping 이라 부르는 세밀한 동기화 기법을 사용하기 때문에 가능하다. 구현 소스를 보면 16개의 락 객체를 배열로 두고 전체 Hash 범위를 1/16로 나누어 락을 담당한다. 최대 16개의 스레드가 경쟁없이 동시에 맵 데이터를 사용할 수 있음  
 > 반대로 단점도 있는데, clear()와 같이 전체 데이터를 독점적으로 사용해야할 경우, 단일 락을 사용할 때보다 동기화 시키기도 어렵고 자원도 많이 소모하게 된다. 또한, size(), isEmpty()같은 연산이 최신값을 반환하지 못할 수도 있다. 하지만 내부 상태를 정확하게 알려주지 못한다는 단점이 그다지 문제되는 경우는 거의 없다.  
 > Since Java 5,6
