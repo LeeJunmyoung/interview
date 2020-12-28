@@ -100,13 +100,13 @@ LinkedHashSet : 들어오는 데이터의 순서를 보장하는 Set
 > List: CopyOnWriteArrayList  
 > Map: ConcurrentMap, ConcurrentHashMap  
 > Set: CopyOnWriteArraySet  
-> SortedMap: ConcurrentSkipListMap (Since Java 6)  
-> SortedSet: ConcurrentSkipListSet (Since Java 6)  
+> SortedMap: ConcurrentSkipListMap (Since JDK 1.6)  
+> SortedSet: ConcurrentSkipListSet (Since JDK 1.6)  
 > Queue 계열:ConcurrentLinkedQueue  
 > <br>
 > 특이사항: Concurrent(병렬/동시성)이란 단어에서 알 수 있듯이 Synchronized 컬렉션과 달리 여러 스레드가 동시에 컬렉션에 접근할 수 있다. ConcurrentHashMap의 경우, lock striping 이라 부르는 세밀한 동기화 기법을 사용하기 때문에 가능하다. 구현 소스를 보면 16개의 락 객체를 배열로 두고 전체 Hash 범위를 1/16로 나누어 락을 담당한다. 최대 16개의 스레드가 경쟁없이 동시에 맵 데이터를 사용할 수 있음  
 > 반대로 단점도 있는데, clear()와 같이 전체 데이터를 독점적으로 사용해야할 경우, 단일 락을 사용할 때보다 동기화 시키기도 어렵고 자원도 많이 소모하게 된다. 또한, size(), isEmpty()같은 연산이 최신값을 반환하지 못할 수도 있다. 하지만 내부 상태를 정확하게 알려주지 못한다는 단점이 그다지 문제되는 경우는 거의 없다.  
-> Since Java 5,6
+> Since JDK 1.5,6
 
 #### 참고, 출처
 - https://www.javatpoint.com/collections-in-java
