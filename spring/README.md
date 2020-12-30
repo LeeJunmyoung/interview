@@ -9,9 +9,10 @@
                 - [READ_COMMITTED](#READ_COMMITTED)
                 - [REPEATABLE_READ](#REPEATABLE_READ)
                 - [SERIALIZABLE](#SERIALIZABLE)
+            - [propagation](#propagation)
 - [참고](#참고)  
-    -[isolation](#isolation)  
-    
+    -[참고-isolation](#참고-isolation)  
+
 </br>
 
 
@@ -24,7 +25,7 @@
 
 </br>
 
-#### isolation
+### isolation
 > ACID 의 I에 해당.  
 > 독립성(Isolation)은 트랜잭션을 수행 시 다른 트랜잭션의 연산 작업이 끼어들지 못하도록 보장하는 것을 의미한다.  
 > 이것은 트랜잭션 밖에 있는 어떤 연산도 중간 단계의 데이터를 볼 수 없음을 의미한다.  
@@ -34,20 +35,20 @@
 
 </br>
 
-##### DEFAULT
+#### DEFAULT
 > DB의 isolation 정책을 따름
 
 </br>
 
-##### READ_UNCOMMITTED
+#### READ_UNCOMMITTED
 > 아직 Commit되지 않은 트랜잭션에 의해 변경된 데이터를 읽어 올수 있다.  
 > X라는 트랜잭션이 A라는 데이터가 B라는 데이터로 커밋되지 않아도 Y트랜잭션에서는 B라고 읽어온다. (Dirty read)  
-> X트랜잭션이 롤백되면 Y트랜잭션은 잘못된 행을 검색하게 된다.   
-* Dirty read : 아직 완료되지 않은 트랜잭션을 다른 트랜잭션에서 읽어올수 있는 것을 dirty read라 한다. READ UNCOMMITTED 격리수준에서만 일어나는 현상
+> X트랜잭션이 롤백되면 Y트랜잭션은 잘못된 행을 검색하게 된다.     
+> Dirty read : 아직 완료되지 않은 트랜잭션을 다른 트랜잭션에서 읽어올수 있는 것을 dirty read라 한다. READ UNCOMMITTED 격리수준에서만 일어나는 현상
 
 </br>
 
-##### READ_COMMITTED
+#### READ_COMMITTED
 > 트랜잭션이 커밋되지 않은 변경 사항이있는 행을 읽는 것을 금지  
 > dirty read 방지  
 > X라는 트랜잭션이 commit 되기 전 까지는 다른 트랜잭션에서는 변경된 데이터를 검색할 수 없다.  
@@ -55,7 +56,7 @@
 
 </br>
 
-##### REPEATABLE_READ 
+#### REPEATABLE_READ 
 > Transaction이 범위내에서는 조회한 데이터의 내용이 항상 동일함을 보장해 줌.  
 > Non-Repeatable Read 방지  
 > SELECT시 현재 시점의 스냅샷을 만들고 스냅샷을 조회함.  
@@ -63,7 +64,7 @@
 
 </br>
 
-##### SERIALIZABLE 
+#### SERIALIZABLE 
 > 완벽한 읽기 일관성 모드 제공(가장 엄격함)  
 > Phantom Read 방지  
 > 성능 측면에서 동시 처리성능이 가장 낮다.  
@@ -71,9 +72,16 @@
 
 </br>
 
+### propagation
+> 트랜잭션 동작 도중 다른 트랜잭션을 호출(실행)하는 상황이에 선택할 수 있는 옵션  
+> 사용할 트랜잭션 전파 동작을 선언할수 있음.  
+
+
+</br>
+
 #### 참고 
 
-##### isolation 
+##### 참고-isolation 
 - https://taetaetae.github.io/2016/10/08/20161008/ 
 - https://nesoy.github.io/articles/2019-05/Database-Transaction-isolation
 - http://wiki.gurubee.net/pages/viewpage.action?pageId=21200923
