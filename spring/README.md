@@ -37,16 +37,29 @@
 
 구분 | 내용
 ---|---
-Default | - DB의 isolation 정책을 따름
+DEFAULT | - DB의 isolation 정책을 따름
 READ_UNCOMMITTED | - 아직 Commit되지 않은 트랜잭션에 의해 변경된 데이터를 읽어 올수 있다. <br><br> - X라는 트랜잭션이 A데이터가 B로 커밋되지 않아도 Y트랜잭션에서는 B라고 읽어온다. (Dirty read) <br><br> - X트랜잭션이 롤백되면 Y트랜잭션은 잘못된 행을 검색하게 된다. <br><br> - Dirty read : 아직 완료되지 않은 트랜잭션을 다른 트랜잭션에서 읽어올수 있는 것을 dirty read라 한다.<br> READ UNCOMMITTED 격리수준에서만 일어나는 현상
 READ_COMMITTED | - 트랜잭션이 커밋되지 않은 변경 사항이있는 행을 읽는 것을 금지  <br><br> - dirty read 방지  <br><br> - X라는 트랜잭션이 commit 되기 전 까지는 다른 트랜잭션에서는 변경된 데이터를 검색할 수 없다. <br><br> - 단, X라는 트랜잭션과 Y라는 트랙잰션에서 X라는 데이터 A가 B로 변경되어 커밋시 <br> Y는 X가 커밋전에는 A로 커밋 후에는 B로 보이는 Non-Repeatable Read가 발생함. 
 REPEATABLE_READ | - Transaction이 범위내에서는 조회한 데이터의 내용이 항상 동일함을 보장해 줌.  <br><br> - Non-Repeatable Read 방지  <br><br> - SELECT시 현재 시점의 스냅샷을 만들고 스냅샷을 조회함.  <br><br> - 단, 다른 트랜잭션에서 Where절에 포함하는 새로운 레코드가 insert되면 유령(phantom) 레코드가 보이게 된다.  
 SERIALIZABLE | - 완벽한 읽기 일관성 모드 제공(가장 엄격함)  <br><br> - Phantom Read 방지 <br><br> - 성능 측면에서 동시 처리성능이 가장 낮다. <br><br> - 트랜잭션이 완료될 때까지 SELECT 문장이 사용하는 모든 데이터에 shared lock이 걸리므로<br> 다른 사용자는 그 영역에 해당하는 데이터에 대한 수정 및 입력이 불가능  
 
+<br>
 
 ### propagation
 > 트랜잭션 동작 도중 다른 트랜잭션을 호출(실행)하는 상황이에 선택할 수 있는 옵션  
 > 사용할 트랜잭션 전파 동작을 선언할수 있음.  
+
+<br>
+
+구분 | 내용
+---|---
+REQUIRED | - 기본속성<br> - 이미 트랜잭션이 있으면 참여하고 없으면 새로 시작
+REQUIRED_NEW | - 기존 트랜잭션과는 별개로 새로운 트랜잭션을 시작함.<br> - 기존 트랜잭션은 보류
+MANDATORY | - 트랜잭션이 있으면 참여하고, 없으면 예외 발생.  
+SUPPORTS | 트랜잭셔이 있으면 참여하고, 없으면 트랜잭션 없이 진행.   
+NOT_SUPPPORTED | 트랜잭션을 사용하지 않음.<br> - 이미 진행중인 트랜잭션이 있다면 보류함.  
+NEVER | - 트랜잭션을 사용하지 않음. <br> - 이미 트랜잭션이 존재한다면 예외 발생  
+NESTED | - 이미 진행중인 트랜잭션이 있다면 중첩 트랜잭션을 시작함 <br> - REQUIRED_NEW와 차이는 부모의 트랜잭션에 따라 영향을 받음 <br> - 본인은 부모에게 영향을 주지 않음.
 
 
 </br>
