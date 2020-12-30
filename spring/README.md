@@ -2,16 +2,11 @@
 
 - [2. Spring](#2.-Spring)
     - [@Transactional](#@Transactional)
-        - [@Transactional 속성](#@Transactional-속성)
+        - [@Transactional 옵션](#@Transactional-옵션)
             - [isolation](#isolation)
-                - [DEFAULT](#DEFAULT)
-                - [READ_UNCOMMITTED](#READ_UNCOMMITTED)
-                - [READ_COMMITTED](#READ_COMMITTED)
-                - [REPEATABLE_READ](#REPEATABLE_READ)
-                - [SERIALIZABLE](#SERIALIZABLE)
             - [propagation](#propagation)
 - [참고](#참고)  
-    -[참고-isolation](#참고-isolation)  
+    -[참고-transactional](#참고-transactional)  
 
 </br>
 
@@ -21,11 +16,21 @@
 
 </br>
  
-### @Transactional 속성
+### @Transactional 옵션
+
+구분 | 내용
+---|---
+isolation|트랜잭션에서 일관성 허용 수준을 설정
+propagation|트랜잭션 동작 도중 다른 트랜잭션을 호출할 때, 어떻게 할 것인지 지정하는 옵션
+noRollbackFor|특정 예외 발생 시 rollback하지 않음 지정  
+rollbackFor|특정 예외 발생 시 rollback함.
+timeout|지정한 시간 내에 메소드 수행이 완료되지 않으면 rollback 함  (-1일 경우 timeout을 사용하지 않음)
+readOnly | 트랜잭션을 읽기 전용으로 설정
 
 </br>
 
 ### isolation
+> 트랜잭션에서 일관성 허용 수준을 설정  
 > ACID 의 I에 해당.  
 > 독립성(Isolation)은 트랜잭션을 수행 시 다른 트랜잭션의 연산 작업이 끼어들지 못하도록 보장하는 것을 의미한다.  
 > 이것은 트랜잭션 밖에 있는 어떤 연산도 중간 단계의 데이터를 볼 수 없음을 의미한다.  
@@ -46,7 +51,7 @@ SERIALIZABLE | - 완벽한 읽기 일관성 모드 제공(가장 엄격함)  <br
 <br>
 
 ### propagation
-> 트랜잭션 동작 도중 다른 트랜잭션을 호출(실행)하는 상황이에 선택할 수 있는 옵션  
+> 트랜잭션 동작 도중 다른 트랜잭션을 호출할 때, 어떻게 할 것인지 지정하는 옵션  
 > 사용할 트랜잭션 전파 동작을 선언할수 있음.  
 
 <br>
@@ -66,8 +71,9 @@ NESTED | - 이미 진행중인 트랜잭션이 있다면 중첩 트랜잭션을 
 
 #### 참고 
 
-##### 참고-isolation 
+##### 참고-transactional
 - https://taetaetae.github.io/2016/10/08/20161008/ 
 - https://nesoy.github.io/articles/2019-05/Database-Transaction-isolation
 - http://wiki.gurubee.net/pages/viewpage.action?pageId=21200923
 - https://medium.com/@wonderful.dev/isolation-level-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0-94e2c30cd8c9
+- https://bamdule.tistory.com/51
