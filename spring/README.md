@@ -2,8 +2,16 @@
 
 - [2. Spring](#2.-Spring)
     - [@Transactional](#@Transactional)
-        -[isolation](#isolation)
-- [참고](#참고)
+        - [@Transactional 속성](#@Transactional-속성)
+            - [isolation](#isolation)
+                - [DEFAULT](#DEFAULT)
+                - [READ_UNCOMMITTED](#READ_UNCOMMITTED)
+                - [READ_COMMITTED](#READ_COMMITTED)
+                - [REPEATABLE_READ](#REPEATABLE_READ)
+                - [SERIALIZABLE](#SERIALIZABLE)
+- [참고](#참고)  
+    -[isolation](#isolation)  
+    
 </br>
 
 
