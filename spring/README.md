@@ -5,6 +5,7 @@
         - [@Transactional 옵션](#@Transactional-옵션)
             - [isolation](#isolation)
             - [propagation](#propagation)
+        - [@Transactional 사용 예시](#@Transaction-사용-예시)
 - [참고](#참고)  
     -[참고-transactional](#참고-transactional)  
 
@@ -68,6 +69,35 @@ NESTED | - 이미 진행중인 트랜잭션이 있다면 중첩 트랜잭션을 
 
 
 </br>
+
+### @Transactional 사용 예시
+```
+아래와 같이 플로우가 되어 있었는데
+승인후작업시 DB lock(대게)이나 사람 실수 등으로 간혹
+Exception이 발생함. 하지만 API요청한 데이터 로그는 DB에 적재해야하는 일이 생김
+그래서 API요청데이터적재에 REQUIRED_NEW로 설정하여 문제 해결.
+
+만약 승인 후 작업시 예외가 발생해서 적재된 로그도 지워야한다면 NESTED 로 했을거임 
+그럼 로그 적재시 예외발생할때는 부모 트랜잭션에는 영향이 없을 테니깐. 
+
+// REQUIRED 
+public 결제프로세스() throws Exception() {
+
+    유호성검증()
+
+    주문프로세스()
+
+    PG사승인요청()
+
+    승인후작업()
+}
+
+public PG사승인요청() {
+    PG사_API요청()
+
+    API요청데이터로그적재()
+}
+```
 
 #### 참고 
 
