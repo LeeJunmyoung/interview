@@ -1,6 +1,9 @@
 # 1. JAVA
 
 - [1. JAVA](#1.-JAVA)
+    - [JVM](#JVM)
+        - [JVM 실행과정](#JVM-실행과정)
+    - [Annotation](#Annotation)
     - [Collection](#Collection)
         - [배열과의 차이점](#배열과의-차이점)
         - [컬렉션 프에임 워크 계층구조](#컬렉션-프에임-워크-계층구조)
@@ -14,8 +17,37 @@
         - [동기화, 병렬 컬렉션](#동기화,-병렬-컬렉션)
             - [동기화된(synchronized) 컬렉션](#동기화된synchronized-컬렉션)
             - [병렬(concurrent) 컬렉션](#병렬concurrent-컬렉션)
+    - [Stream](#Stream)
 - [참고](#참고)
+    - [JVM 참고](#JVM-참고)
+    - [Collection 참고](#Collectio-참고)
 </br>
+
+## JVM
+> 자바 바이트코드가 JRE 위에서 동작  
+> JRE에서 가장 중요한 요소는 자바 바이트코드를 해석하고 실행하는 JVM   
+> JRE는 자바 API와 JVM으로 구성되며, JVM의 역할은 자바 애플리케이션을 클래스 로더(Class Loader)를 통해 읽어 들여서 자바 API와 함께 실행하는 것  
+> 자바 가상 머신(Java Virtual Machine)은 자바 바이트코드를 해석하고 실행함.  
+
+</br>
+
+![ ](img/java-자바코드수행과정.png)  
+
+### JVM 실행과정
+1. JVM은 OS로부터 메모리를 할당 받는다.  
+2. JVM 메모리를 여러 영역으로 나누어 관리한다.  
+3. 자바 컴파일러(javac)가 자바 소스코드(.java)를 바이트코드(.class)로 변환한다.  
+4. Class Loader를 통해 바이트코드(.class)는 런타임 데이터 영역(Runtime Data Areas)에 로드한다.  
+5. 행 엔진(Execution Engine)이 자바 바이트코드를 실행한다.  
+
+
+</br>
+===
+
+## Annotation
+
+</br>
+===
 
 ## Collection
 > 자바에서 컬렉션 프레임워크(collection framework)란 다수의 데이터를 쉽고 효과적으로 처리할 수 있는 표준화된 방법을 제공하는 클래스의 집합  
@@ -108,6 +140,22 @@ LinkedHashSet : 들어오는 데이터의 순서를 보장하는 Set
 > 반대로 단점도 있는데, clear()와 같이 전체 데이터를 독점적으로 사용해야할 경우, 단일 락을 사용할 때보다 동기화 시키기도 어렵고 자원도 많이 소모하게 된다. 또한, size(), isEmpty()같은 연산이 최신값을 반환하지 못할 수도 있다. 하지만 내부 상태를 정확하게 알려주지 못한다는 단점이 그다지 문제되는 경우는 거의 없다.  
 > Since JDK 1.5,6
 
+<br>
+===
+
+## Stream
+> Collection(배열 포함)의 요소를 하나씩 참조하여 람다식으로 처리할 수 있는 반복자 이다.
+
+
+<br>
+===
+
 #### 참고, 출처
+
+##### JVM 참고
+- https://asfirstalways.tistory.com/158
+- https://d2.naver.com/helloworld/1230
+
+##### Collection 참고
 - https://www.javatpoint.com/collections-in-java
 - https://deepblue28.tistory.com/entry/Java-SynchronizedCollections-vs-ConcurrentCollections (동기화, 병렬 컬렉션)
