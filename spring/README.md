@@ -1,11 +1,11 @@
 # 2. Spring
 
-- [2. Spring](#2.-Spring)
-    - [@Transactional](#@Transactional)
-        - [@Transactional 옵션](#@Transactional-옵션)
+- [2. Spring](#2-spring)
+    - [@Transactional](#transactional)
+        - [@Transactional 옵션](#transactional-옵션)
             - [isolation](#isolation)
             - [propagation](#propagation)
-        - [@Transactional 사용 예시](#@Transaction-사용-예시)
+        - [@Transactional 사용 예시](#transactional-사용-예시)
 - [참고](#참고)  
     -[참고-transactional](#참고-transactional)  
 
