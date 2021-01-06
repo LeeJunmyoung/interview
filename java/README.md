@@ -36,9 +36,8 @@
 
 </br>
 
-<center>
-![ ](img/java-자바코드수행과정.png)  
-</center>
+
+![ ](img/java-자바코드수행과정.png){: .align-center}
 
 ### JVM 실행과정
 1. JVM은 OS로부터 메모리를 할당 받는다.  
@@ -77,9 +76,7 @@ JIT(Just-In-Time) | 인터프리터의 단점을 보완하기 위해 도입된 �
 > 이중 PC 레지스터(PC Register), JVM 스택(JVM Stack), 네이티브 메서드 스택(Native Method Stack)은 스레드마다 하나씩 생성된다.  
 > 힙(Heap), 메서드 영역(Method Area), 런타임 상수 풀(Runtime Constant Pool)은 모든 스레드가 공유해서 사용한다.  
 
-<center>
-    ![ ](img/java-runtime-data-area.png)
-</center>
+![ ](img/java-runtime-data-area.png){: .align-center}
 
 구분 | 내용
 ---|---
