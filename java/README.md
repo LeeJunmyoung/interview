@@ -6,6 +6,7 @@
         - [Class Loader(클래스 로더)](#class-loader클래스-로더)
         - [Execution Engine(실행 엔진)](#execution-engine실행-엔진)
         - [Garbage collector(가비지 컬렉터)](#garbage-collector가비지-컬렉터)
+        - [Runtime Data Arar](#runtime-data-area)
     - [Annotation](#Annotation)
     - [Collection](#Collection)
         - [배열과의 차이점](#배열과의-차이점)
@@ -65,7 +66,26 @@ JIT(Just-In-Time) | 인터프리터의 단점을 보완하기 위해 도입된 �
 * 자바는 javac로 컴파일 하고 java로 실행시 중간언어(클래스파일)을 한줄 씩 자바인터프로터가 번역하므로 컴파일 언어 이면서 인터프리터 언어이다.  
 
 ### Garbage collector(가비지 컬렉터)
-> GC를 수행하는 모듈
+> GC를 수행하는 모듈  
+  
+### Run Data Area
+> 런타임 데이터 영역은 JVM이라는 프로그램이 운영체제 위에서 실행되면서 할당받는 메모리 영역이다.  
+> 런타임 데이터 영역은 6개의 영역으로 나눌 수 있다.  
+> 이중 PC 레지스터(PC Register), JVM 스택(JVM Stack), 네이티브 메서드 스택(Native Method Stack)은 스레드마다 하나씩 생성된다.  
+> 힙(Heap), 메서드 영역(Method Area), 런타임 상수 풀(Runtime Constant Pool)은 모든 스레드가 공유해서 사용한다.  
+
+구분 | 내용
+---|---
+PC Register | PC(Program Counter) 레지스터는 각 스레드마다 하나씩 존재하며 스레드가 시작될 때 생성된다.<br> PC레지스터는 현재 수행중인 JVM 명령의 주소를 갖는다.
+JVM Stack | JVM 스택은 각 스레드마다 하나씩 존재하며 스레드가 시작될 때 생성된다. <br>스택 프레임(Stack Frame)이라는 구조체를 저장하는 스택으로, JVM은 오직 JVM 스택에 스택 프레임을 추가하고(push) 제거하는(pop) 동작만 수행한다. <br> 예외 발생 시 printStackTrace() 등의 메서드로 보여주는 Stack Trace의 각 라인은 하나의 스택 프레임을 표현한다.
+Native Method Stack | 자바 외의 언어로 작성된 네이티브 코드를 위한 스택이다. 즉, JNI(Java Native Interface)를 통해 호출하는 C/C++ 등의 코드를 수행하기 위한 스택으로, 언어에 맞게 C 스택이나 C++ 스택이 생성된다.
+Heap | 인스턴스 또는 객체를 저장하는 공간으로 가비지 컬렉션 대상이다. <br> new 연산자나 생성된 배열을 저장한다. <br>JVM 성능 등의 이슈에서 가장 많이 언급되는 공간이다.
+Method Area | 메서드 영역은 모든 스레드가 공유하는 영역으로 JVM이 시작될 때 생성된다.<br> JVM이 읽어 들인 각각의 클래스와 인터페이스에 대한 런타임 상수 풀, 필드와 메서드 정보, Static 변수, 메서드의 바이트코드 등을 보관한다.
+Runtime Constant Pool | 메서드 영역에 포함되는 영역이다.<br> 각 클래스와 인터페이스의 상수뿐만 아니라, 메서드와 필드에 대한 모든 레퍼런스까지 담고 있는 테이블이다. 즉, 어떤 메서드나 필드를 참조할 때 JVM은 런타임 상수 풀을 통해 해당 메서드나 필드의 실제 메모리상 주소를 찾아서 참조하며 중복을 막는 역할을 수행한다. 
+
+* JVM은 자바 프로그램에서 메소드가 호출되면, 메소드의 호출과 관계되는 지역 변수와 매개변수를 스택 영역에 저장합니다.이렇게 스택 영역은 메소드의 호출과 함께 할당되며, 메소드의 호출이 완료되면 소멸합니다. 이렇게 스택 영역에 저장되는 메소드의 호출 정보를 스택 프레임(stack frame)이라고 합니다.
+
+![ ](img/java-runtime-data-area.png)  
 
 </br>
 <hr/>
@@ -185,6 +205,7 @@ LinkedHashSet : 들어오는 데이터의 순서를 보장하는 Set
 ##### JVM 참고
 - https://asfirstalways.tistory.com/158
 - https://d2.naver.com/helloworld/1230
+- http://www.tcpschool.com/java/intro
 
 ##### Collection 참고
 - https://www.javatpoint.com/collections-in-java
