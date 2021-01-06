@@ -68,11 +68,13 @@ JIT(Just-In-Time) | 인터프리터의 단점을 보완하기 위해 도입된 �
 ### Garbage collector(가비지 컬렉터)
 > GC를 수행하는 모듈  
   
-### Run Data Area
+### Runtime Data Area
 > 런타임 데이터 영역은 JVM이라는 프로그램이 운영체제 위에서 실행되면서 할당받는 메모리 영역이다.  
 > 런타임 데이터 영역은 6개의 영역으로 나눌 수 있다.  
 > 이중 PC 레지스터(PC Register), JVM 스택(JVM Stack), 네이티브 메서드 스택(Native Method Stack)은 스레드마다 하나씩 생성된다.  
 > 힙(Heap), 메서드 영역(Method Area), 런타임 상수 풀(Runtime Constant Pool)은 모든 스레드가 공유해서 사용한다.  
+
+![ ](img/java-runtime-data-area.png)  
 
 구분 | 내용
 ---|---
@@ -85,7 +87,7 @@ Runtime Constant Pool | 메서드 영역에 포함되는 영역이다.<br> 각 �
 
 * JVM은 자바 프로그램에서 메소드가 호출되면, 메소드의 호출과 관계되는 지역 변수와 매개변수를 스택 영역에 저장합니다.이렇게 스택 영역은 메소드의 호출과 함께 할당되며, 메소드의 호출이 완료되면 소멸합니다. 이렇게 스택 영역에 저장되는 메소드의 호출 정보를 스택 프레임(stack frame)이라고 합니다.
 
-![ ](img/java-runtime-data-area.png)  
+
 
 </br>
 <hr/>
