@@ -12,6 +12,7 @@
         - [Annotation 종류](#Annotation-종류)
             -[빌트인(Built-in) Annotation](#빌트인Built-in-Annotation)
             -[메타(Meta) Annotation](#메타Meta-Annotation)
+            -[커스텀(Custom) Annotation](#커스텀Custom-Annotation)
     - [Collection](#Collection)
         - [배열과의 차이점](#배열과의-차이점)
         - [컬렉션 프에임 워크 계층구조](#컬렉션-프에임-워크-계층구조)
@@ -152,6 +153,20 @@ Runtime Constant Pool | 메서드 영역에 포함되는 영역이다.<br> 각 �
     5. CONSTRUCTOR : 생성자
     6. LOCAL_VARIABLE : 로컬변수
     7. ANNOTATION_TYPE : 어노테이션 타입
+
+#### 커스텀(Custom) Annotation
+> 임의로 어노테이션을 정의하여 사용할 수 있다.  
+> 어노테이션은 interface키워드 앞에 @를 붙여 표시한다.
+```
+@Retention(RUNTIME)
+@Target(METHOD)
+public @interface Role  {
+	RoleType[] values();
+}
+======================
+@Role(values= {RoleType.ROLE_ADMIN, RoleType.ROLE_NORMAL})
+public void test()
+```
 
 </br>
 <hr/>
