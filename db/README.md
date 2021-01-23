@@ -7,6 +7,7 @@
             - [공유(Shared) Lock](#공유Shared-Lock)
             - [베타(Exclusive) Lock](#베타Exclusive-Lock)
         - [블로킹 (Blocking)](#블로킹-Blocking)
+        - [교착상태 (Deadlock)](#교착상태-Deadlock)
 - [참고](#참고)  
 
 </br>
